@@ -1,0 +1,8 @@
+Requirement already satisfied: pipreqs in c:\users\amani\anaconda3\lib\site-packages (0.4.11)
+Requirement already satisfied: docopt in c:\users\amani\anaconda3\lib\site-packages (from pipreqs) (0.6.2)
+Requirement already satisfied: yarg in c:\users\amani\anaconda3\lib\site-packages (from pipreqs) (0.1.9)
+Requirement already satisfied: requests in c:\users\amani\anaconda3\lib\site-packages (from yarg->pipreqs) (2.26.0)
+Requirement already satisfied: certifi>=2017.4.17 in c:\users\amani\anaconda3\lib\site-packages (from requests->yarg->pipreqs) (2021.10.8)
+Requirement already satisfied: idna<4,>=2.5 in c:\users\amani\anaconda3\lib\site-packages (from requests->yarg->pipreqs) (3.2)
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in c:\users\amani\anaconda3\lib\site-packages (from requests->yarg->pipreqs) (1.26.7)
+Requirement already satisfied: charset-normalizer~=2.0.0 in c:\users\amani\anaconda3\lib\site-packages (from requests->yarg->pipreqs) (2.0.4)
