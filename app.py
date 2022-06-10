@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import plotly.express as px
 from sklearn.metrics import mean_squared_error
-from sklearn.metrics import mean_absolute_error
+from sklearn.metrics import mean_absolute_percentage_error
 from sklearn.model_selection import train_test_split
 from sklearn import metrics
 
@@ -140,21 +140,32 @@ def main():
     
     
     y_pred=model.predict(X_test)
+   
+    errors = abs(y_pred - y_test)
+    mae = 100 * np.mean(errors / y_test)
+    accuracy = 100 - mae
 
-
+    st.markdown("Model Performance")
     col1, col2 = st.columns(2)
 
     with col1:
         st.markdown(":city_sunrise:Energy use by kg/yard**")
         st.write("R2: ",round(metrics.r2_score(y_test.iloc[:,1], y_pred[:,1]),2))
-        st.write("MAE: ", round(mean_absolute_error(y_test.iloc[:,1], y_pred[:,1]),2))
+        st.write("Percent MAE: {:.2f} %".format(mean_absolute_percentage_error(y_test.iloc[:,1], y_pred[:,1])))
+        st.write("Accuracy for Energy use : {:.2f} %".format(accuracy[1]))
 
 
     with col2:
         st.markdown("**:city_sunset:GHG emissions by year**")
         st.write("R2: ", round(metrics.r2_score(y_test.iloc[:,0], y_pred[:,0]),2))
-        st.write("MAE: ",round(mean_absolute_error(y_test.iloc[:,0], y_pred[:,0]),2))
+        #st.write("Percent MAE: ,{round(mean_absolute_percentage_error(y_test.iloc[:,0], y_pred[:,0]),2)
+        st.write("Percent MAE: {:.2f} %".format(mean_absolute_percentage_error(y_test.iloc[:,0], y_pred[:,0])))
+        st.write("Accuracy for GHG emissions: {:.2f} %".format(accuracy[0]))
+    
+   
 
+   
+ 
 
 if __name__ == '__main__':
     main()
